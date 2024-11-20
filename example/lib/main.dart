@@ -26,12 +26,13 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: [
               StreamBuilder(
-                stream: Stream.periodic(Duration(seconds: 1)),
+                stream: ClipboardHandler.events,
                 builder: (context, snapshot) {
                   return FutureBuilder(
                     future: ClipboardHandler.instance.hasURLs(),
                     builder: (context, snapshot) => Text(
-                        (snapshot.data ?? false) ? 'Has urls' : "Not has urls"),
+                      (snapshot.data ?? false) ? 'Has urls' : "Not has urls",
+                    ),
                   );
                 },
               ),
@@ -40,8 +41,9 @@ class _MyAppState extends State<MyApp> {
               ),
               TextField(
                 controller: TextEditingController(
-                    text:
-                        "https://chatgpt.com/c/673dd7dd-94a4-8011-9bed-ded20936079b"),
+                  text:
+                      "https://chatgpt.com/c/673dd7dd-94a4-8011-9bed-ded20936079b",
+                ),
               )
             ],
           ),

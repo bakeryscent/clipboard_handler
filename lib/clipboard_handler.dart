@@ -9,7 +9,8 @@ class ClipboardHandler {
 
   ClipboardHandler._internal();
 
-  static const EventChannel _eventChannel = EventChannel('test');
+  static const EventChannel _eventChannel =
+      EventChannel('clipboard_changes_events');
 
   static Stream<ClipboardHandler> get events {
     return _eventChannel.receiveBroadcastStream().map((e) => instance);
